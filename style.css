@@ -1,0 +1,1674 @@
+/* =========================================================
+   RESET
+========================================================= */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+}
+
+
+:root {
+
+    --pink: #ff4f81;
+
+    --rose: #ff7ca2;
+
+    --cream: #fff8f5;
+
+    --ink: #261820;
+
+    --muted: #776a70;
+
+    --card: #ffffff;
+
+    --line: #f0dfe4;
+
+}
+
+
+/* =========================================================
+   GENERAL
+========================================================= */
+
+html {
+
+    scroll-behavior: smooth;
+
+}
+
+
+body {
+
+    font-family:
+        "DM Sans",
+        sans-serif;
+
+    background:
+        var(--cream);
+
+    color:
+        var(--ink);
+
+    overflow-x: hidden;
+
+}
+
+
+/* Background */
+
+body::before {
+
+    content: "";
+
+    position: fixed;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 10%,
+            #ffdbe7 0,
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 90% 30%,
+            #ffe5ee 0,
+            transparent 25%
+        );
+
+    pointer-events: none;
+
+    z-index: -2;
+
+}
+
+
+/* =========================================================
+   OPENING SCREEN
+========================================================= */
+
+#openingScreen {
+
+    position: fixed;
+
+    inset: 0;
+
+    z-index: 9999;
+
+    background:
+
+        radial-gradient(
+            circle at 20% 20%,
+            #ffd5e2,
+            transparent 35%
+        ),
+
+        radial-gradient(
+            circle at 80% 80%,
+            #ffe5ed,
+            transparent 35%
+        ),
+
+        #fff8f5;
+
+    display: grid;
+
+    place-items: center;
+
+    text-align: center;
+
+    transition:
+
+        opacity 1s ease,
+
+        visibility 1s ease;
+
+}
+
+
+#openingScreen.hide {
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    pointer-events: none;
+
+}
+
+
+.opening-content {
+
+    padding: 30px;
+
+    max-width: 650px;
+
+}
+
+
+.opening-floating-heart {
+
+    position: absolute;
+
+    top: 9%;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 75px;
+
+    color: var(--pink);
+
+    animation:
+        openingHeart 1.8s ease-in-out infinite;
+
+}
+
+
+@keyframes openingHeart {
+
+    0%,
+    100% {
+
+        transform:
+            translateX(-50%)
+            scale(1);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(-50%)
+            scale(1.15);
+
+    }
+
+}
+
+
+.opening-small {
+
+    color: var(--pink);
+
+    font-size: 12px;
+
+    font-weight: 700;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 20px;
+
+}
+
+
+.opening-content h1 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            60px,
+            12vw,
+            110px
+        );
+
+    line-height: .9;
+
+    margin-bottom: 30px;
+
+}
+
+
+.opening-content h1 span {
+
+    color: var(--pink);
+
+    font-style: italic;
+
+}
+
+
+.opening-content p {
+
+    color: var(--muted);
+
+    font-size: 16px;
+
+    line-height: 1.7;
+
+    margin-bottom: 30px;
+
+}
+
+
+#openLove {
+
+    border: none;
+
+    background:
+        var(--ink);
+
+    color: white;
+
+    padding:
+        17px
+        30px;
+
+    border-radius:
+        999px;
+
+    font-size: 15px;
+
+    font-weight: 700;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 15px 40px #26182030;
+
+    transition:
+        transform .25s ease,
+        box-shadow .25s ease;
+
+}
+
+
+#openLove:hover {
+
+    transform:
+        translateY(-4px);
+
+    box-shadow:
+        0 20px 50px #26182040;
+
+}
+
+
+.opening-note {
+
+    margin-top: 25px;
+
+    font-size: 11px;
+
+    color: #aa969e;
+
+}
+
+
+.music-error {
+
+    color: #d34a67;
+
+    font-size: 11px;
+
+    margin-top: 12px;
+
+    min-height: 16px;
+
+}
+
+
+/* =========================================================
+   FLOATING HEARTS
+========================================================= */
+
+#hearts {
+
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    z-index: 20;
+
+    overflow: hidden;
+
+}
+
+
+.floating-heart {
+
+    position: absolute;
+
+    bottom: -30px;
+
+    animation:
+        floatUp linear forwards;
+
+    opacity: .7;
+
+    color: var(--pink);
+
+}
+
+
+@keyframes floatUp {
+
+    to {
+
+        transform:
+            translateY(-110vh)
+            rotate(30deg);
+
+        opacity: 0;
+
+    }
+
+}
+
+
+/* =========================================================
+   MAIN
+========================================================= */
+
+main {
+
+    max-width: 1050px;
+
+    margin: auto;
+
+    padding:
+        0 22px;
+
+}
+
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+
+    min-height: 100vh;
+
+    display: grid;
+
+    place-content: center;
+
+    text-align: center;
+
+    padding:
+        80px 10px;
+
+}
+
+
+.eyebrow {
+
+    font-size: 11px;
+
+    letter-spacing: 2.5px;
+
+    text-transform: uppercase;
+
+    color: var(--pink);
+
+    font-weight: 700;
+
+}
+
+
+.hero h1 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            48px,
+            9vw,
+            92px
+        );
+
+    line-height: .98;
+
+    margin:
+        20px auto;
+
+    max-width: 900px;
+
+}
+
+
+.hero h1 span {
+
+    font-style: italic;
+
+    color: var(--pink);
+
+}
+
+
+.hero-copy {
+
+    max-width: 650px;
+
+    margin:
+        0 auto 30px;
+
+    color: var(--muted);
+
+    font-size: 17px;
+
+    line-height: 1.8;
+
+}
+
+
+.primary {
+
+    border: 0;
+
+    background:
+        var(--ink);
+
+    color: white;
+
+    border-radius:
+        99px;
+
+    padding:
+        16px 25px;
+
+    font-weight: 700;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 14px 30px #26182022;
+
+    transition: .25s;
+
+}
+
+
+.primary:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 18px 40px #26182030;
+
+}
+
+
+.primary span {
+
+    color: #ff8eac;
+
+    margin-left: 8px;
+
+}
+
+
+.small {
+
+    padding:
+        12px 18px;
+
+}
+
+
+.scroll-note {
+
+    margin-top: 55px;
+
+    color: #a28f96;
+
+    font-size: 12px;
+
+}
+
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section {
+
+    padding:
+        110px 0;
+
+}
+
+
+.section-tag {
+
+    font-size: 11px;
+
+    letter-spacing: 2.5px;
+
+    text-transform: uppercase;
+
+    color: var(--pink);
+
+    font-weight: 700;
+
+}
+
+
+/* =========================================================
+   LETTER
+========================================================= */
+
+.letter {
+
+    text-align: center;
+
+}
+
+
+.letter-card {
+
+    max-width: 720px;
+
+    margin:
+        30px auto 0;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    padding:
+        55px
+        clamp(
+            25px,
+            7vw,
+            70px
+        );
+
+    box-shadow:
+        0 25px 70px #8f425a14;
+
+    position: relative;
+
+    border-radius:
+        28px;
+
+    text-align: left;
+
+}
+
+
+.stamp {
+
+    position: absolute;
+
+    right: 28px;
+
+    top: 24px;
+
+    color: var(--pink);
+
+    font-size: 34px;
+
+}
+
+
+.letter h2,
+.promise h2,
+.final h2,
+.quiz h2,
+.game h2,
+.reasons h2 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        clamp(
+            34px,
+            6vw,
+            55px
+        );
+
+    margin:
+        18px 0;
+
+}
+
+
+.letter p {
+
+    font-size: 16px;
+
+    line-height: 1.9;
+
+    color: #65585e;
+
+    margin:
+        14px 0;
+
+}
+
+
+.letter .highlight {
+
+    font-size: 20px;
+
+    color:
+        var(--ink);
+
+    font-weight: 700;
+
+    border-left:
+        3px solid var(--pink);
+
+    padding-left: 18px;
+
+}
+
+
+.signature {
+
+    text-align: right;
+
+    margin-top: 30px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-style: italic;
+
+    font-size: 19px;
+
+}
+
+
+/* =========================================================
+   REASONS
+========================================================= */
+
+.reasons {
+
+    text-align: center;
+
+}
+
+
+.sub {
+
+    color:
+        var(--muted);
+
+    margin:
+        -5px auto 35px;
+
+    line-height: 1.6;
+
+}
+
+
+.reason-grid {
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(4, 1fr);
+
+    gap: 14px;
+
+}
+
+
+.reason-card {
+
+    min-height: 180px;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        22px;
+
+    text-align: left;
+
+    padding: 23px;
+
+    cursor: pointer;
+
+    transition: .3s;
+
+    box-shadow:
+        0 12px 30px #8f425a0c;
+
+}
+
+
+.reason-card:hover {
+
+    transform:
+        translateY(-7px);
+
+    border-color:
+        #ffb4c9;
+
+}
+
+
+.reason-card span {
+
+    display: block;
+
+    color:
+        #ffb0c4;
+
+    font-size: 12px;
+
+    margin-bottom: 55px;
+
+}
+
+
+.reason-card strong {
+
+    display: block;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 23px;
+
+}
+
+
+.reason-card small {
+
+    color:
+        #b59ca4;
+
+}
+
+
+.reason-output {
+
+    margin:
+        24px auto 0;
+
+    max-width: 680px;
+
+    min-height: 70px;
+
+    padding: 22px;
+
+    border-radius: 18px;
+
+    background:
+        #fff0f4;
+
+    color:
+        #7d4355;
+
+    line-height: 1.6;
+
+}
+
+
+/* =========================================================
+   GAME
+========================================================= */
+
+.game {
+
+    text-align: center;
+
+}
+
+
+.game-box {
+
+    max-width: 760px;
+
+    margin:
+        30px auto;
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        25px;
+
+    padding: 18px;
+
+    box-shadow:
+        0 20px 50px #8f425a12;
+
+}
+
+
+.game-top {
+
+    display: flex;
+
+    justify-content:
+        space-between;
+
+    padding:
+        5px 7px 14px;
+
+    font-size: 13px;
+
+    color:
+        var(--muted);
+
+}
+
+
+#heartArena {
+
+    height: 340px;
+
+    border-radius:
+        18px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #fff2f6,
+            #fff
+        );
+
+    position: relative;
+
+    overflow: hidden;
+
+    border:
+        1px dashed #ffc3d2;
+
+}
+
+
+.target-heart {
+
+    position: absolute;
+
+    border: 0;
+
+    background: none;
+
+    font-size: 31px;
+
+    cursor: pointer;
+
+    animation:
+        pop .8s infinite alternate;
+
+    filter:
+        drop-shadow(
+            0 7px 8px #ff4f8130
+        );
+
+}
+
+
+@keyframes pop {
+
+    to {
+
+        transform:
+            scale(1.12);
+
+    }
+
+}
+
+
+.game-box .primary {
+
+    margin-top:
+        15px;
+
+}
+
+
+/* =========================================================
+   QUIZ
+========================================================= */
+
+.quiz-card {
+
+    max-width: 700px;
+
+    margin:
+        30px auto;
+
+    background:
+        #ffffff;
+
+    border-radius:
+        25px;
+
+    border:
+        1px solid var(--line);
+
+    padding: 30px;
+
+    text-align: left;
+
+    box-shadow:
+        0 20px 50px #8f425a12;
+
+}
+
+
+.quiz-progress {
+
+    font-size: 12px;
+
+    color:
+        #a68f97;
+
+    margin-bottom:
+        30px;
+
+}
+
+
+.quiz-progress div {
+
+    height: 5px;
+
+    background:
+        #f6e5ea;
+
+    border-radius:
+        99px;
+
+    margin-top:
+        9px;
+
+    overflow: hidden;
+
+}
+
+
+.quiz-progress i {
+
+    display: block;
+
+    height: 100%;
+
+    width: 20%;
+
+    background:
+        var(--pink);
+
+    transition:
+        .4s;
+
+}
+
+
+.quiz-card h3 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size: 27px;
+
+    line-height: 1.3;
+
+    margin-bottom:
+        20px;
+
+}
+
+
+.answer {
+
+    width: 100%;
+
+    text-align: left;
+
+    padding: 15px;
+
+    margin: 7px 0;
+
+    border:
+        1px solid var(--line);
+
+    border-radius:
+        13px;
+
+    background:
+        #ffffff;
+
+    cursor: pointer;
+
+    font-family:
+        inherit;
+
+    transition:
+        .2s;
+
+}
+
+
+.answer:hover {
+
+    border-color:
+        #ff9fbb;
+
+    background:
+        #fff4f7;
+
+}
+
+
+.answer.correct {
+
+    background:
+        #eafff0;
+
+    border-color:
+        #8ed2a5;
+
+}
+
+
+.answer.wrong {
+
+    background:
+        #fff0f0;
+
+    border-color:
+        #efa4a4;
+
+}
+
+
+.quiz-result {
+
+    text-align: center;
+
+    padding-top:
+        20px;
+
+    font-weight:
+        700;
+
+    color:
+        var(--pink);
+
+}
+
+
+/* =========================================================
+   PROMISE
+========================================================= */
+
+.promise {
+
+    text-align:
+        center;
+
+}
+
+
+.promise-card {
+
+    background:
+        var(--ink);
+
+    color:
+        #ffffff;
+
+    border-radius:
+        30px;
+
+    padding:
+        55px
+        clamp(
+            25px,
+            7vw,
+            75px
+        );
+
+    max-width:
+        800px;
+
+    margin:
+        auto;
+
+    box-shadow:
+        0 25px 70px #2618202b;
+
+}
+
+
+.promise-card .big-heart {
+
+    font-size:
+        55px;
+
+    color:
+        #ff7b9f;
+
+}
+
+
+.promise-card h2 {
+
+    color:
+        #ffffff;
+
+}
+
+
+.promise-card > p {
+
+    color:
+        #d9cdd1;
+
+    line-height:
+        1.8;
+
+    max-width:
+        600px;
+
+    margin:
+        12px auto;
+
+}
+
+
+.promise-list {
+
+    text-align:
+        left;
+
+    max-width:
+        620px;
+
+    margin:
+        30px auto;
+
+    padding:
+        20px;
+
+    background:
+        #ffffff0b;
+
+    border-radius:
+        18px;
+
+}
+
+
+.promise-list div {
+
+    padding:
+        10px;
+
+    color:
+        #f8e8ed;
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   FINAL
+========================================================= */
+
+.final {
+
+    text-align:
+        center;
+
+    min-height:
+        70vh;
+
+}
+
+
+.final > p {
+
+    max-width:
+        570px;
+
+    margin:
+        0 auto 30px;
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.8;
+
+}
+
+
+.choice-row {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        12px;
+
+    flex-wrap:
+        wrap;
+
+}
+
+
+.yes,
+.maybe {
+
+    border:
+        0;
+
+    border-radius:
+        99px;
+
+    padding:
+        16px 25px;
+
+    font-weight:
+        700;
+
+    cursor:
+        pointer;
+
+}
+
+
+.yes {
+
+    background:
+        var(--pink);
+
+    color:
+        #ffffff;
+
+}
+
+
+.maybe {
+
+    background:
+        #ffffff;
+
+    border:
+        1px solid var(--line);
+
+    color:
+        var(--muted);
+
+}
+
+
+#finalMessage {
+
+    margin:
+        35px auto;
+
+    max-width:
+        650px;
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        27px;
+
+    color:
+        var(--pink);
+
+    line-height:
+        1.5;
+
+}
+
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+
+    text-align:
+        center;
+
+    padding:
+        35px 20px;
+
+    color:
+        #b59da5;
+
+    font-size:
+        11px;
+
+    letter-spacing:
+        .5px;
+
+}
+
+
+/* =========================================================
+   MODAL
+========================================================= */
+
+.modal {
+
+    position:
+        fixed;
+
+    inset:
+        0;
+
+    background:
+        #261820a6;
+
+    backdrop-filter:
+        blur(7px);
+
+    z-index:
+        50;
+
+    display:
+        none;
+
+    place-items:
+        center;
+
+    padding:
+        20px;
+
+}
+
+
+.modal.show {
+
+    display:
+        grid;
+
+}
+
+
+.modal-card {
+
+    max-width:
+        520px;
+
+    background:
+        #ffffff;
+
+    border-radius:
+        28px;
+
+    padding:
+        45px;
+
+    text-align:
+        center;
+
+    position:
+        relative;
+
+    box-shadow:
+        0 30px 100px #0004;
+
+}
+
+
+.close {
+
+    position:
+        absolute;
+
+    right:
+        18px;
+
+    top:
+        13px;
+
+    border:
+        0;
+
+    background:
+        none;
+
+    font-size:
+        28px;
+
+    color:
+        #9e8d93;
+
+    cursor:
+        pointer;
+
+}
+
+
+.modal-heart {
+
+    font-size:
+        45px;
+
+    color:
+        var(--pink);
+
+}
+
+
+.modal-card h2 {
+
+    font-family:
+        "Playfair Display",
+        serif;
+
+    font-size:
+        35px;
+
+    margin:
+        12px;
+
+}
+
+
+.modal-card p {
+
+    color:
+        var(--muted);
+
+    line-height:
+        1.7;
+
+    margin:
+        15px 0 25px;
+
+}
+
+
+/* =========================================================
+   SCROLL ANIMATION
+========================================================= */
+
+.reveal {
+
+    opacity:
+        0;
+
+    transform:
+        translateY(30px);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+
+.reveal.visible {
+
+    opacity:
+        1;
+
+    transform:
+        none;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:720px) {
+
+
+    .hero {
+
+        padding-top:
+            100px;
+
+    }
+
+
+    .reason-grid {
+
+        grid-template-columns:
+            repeat(2, 1fr);
+
+    }
+
+
+    section {
+
+        padding:
+            80px 0;
+
+    }
+
+
+    .letter-card {
+
+        padding:
+            45px 25px;
+
+    }
+
+
+    .game-box {
+
+        padding:
+            10px;
+
+    }
+
+
+    .quiz-card {
+
+        padding:
+            22px;
+
+    }
+
+
+    .promise-card {
+
+        padding:
+            45px 22px;
+
+    }
+
+
+    .opening-content {
+
+        padding:
+            20px;
+
+    }
+
+
+    .opening-floating-heart {
+
+        font-size:
+            55px;
+
+        top:
+            8%;
+
+    }
+
+}
+
+
+@media(max-width:430px) {
+
+
+    .reason-grid {
+
+        grid-template-columns:
+            1fr 1fr;
+
+    }
+
+
+    .reason-card {
+
+        min-height:
+            150px;
+
+        padding:
+            17px;
+
+    }
+
+
+    .reason-card span {
+
+        margin-bottom:
+            35px;
+
+    }
+
+
+    .opening-content h1 {
+
+        font-size:
+            65px;
+
+    }
+
+}
